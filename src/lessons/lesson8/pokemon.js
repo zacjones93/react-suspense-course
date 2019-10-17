@@ -1,8 +1,11 @@
 import React from "react";
 import { unstable_createResource as createResource } from "react-cache";
+import sleep from 'sleep-promise';
 
 let PokemonResource = createResource(() =>
-  fetch("https://pokeapi.co/api/v2/pokemon/1").then(res => res.json())
+  fetch("https://pokeapi.co/api/v2/pokemon/1").then(res =>
+    res.json().then(sleep(1000))
+  )
 );
 
 export function Pokemon() {

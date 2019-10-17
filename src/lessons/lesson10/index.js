@@ -9,10 +9,12 @@ export default function() {
       <ErrorBoundary fallback={<h1>...couldn't catch 'em all</h1>}>
         <SuspenseList revealOrder="together">
           <React.Suspense fallback="Locating pokemon...">
-            <Pokemon />
+            <Pokemon id={4}/>
           </React.Suspense>
           <React.Suspense fallback="Gotta catch 'em all...">
-            <PokemonList />
+            <PokemonList
+            as="ul"
+            renderItem={pokemon => (<li key={pokemon.name}>{pokemon.name}</li>)} />
           </React.Suspense>
         </SuspenseList>
       </ErrorBoundary>

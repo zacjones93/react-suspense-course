@@ -21,7 +21,7 @@ export default function() {
               as="ul"
               renderItem={pokemon => (
                 <li key={pokemon.name}>
-                  <button onClick={() => alert(`You selected ${pokemon.name}`)}>
+                  <button onClick={() => alert(`You selected ${pokemon.url.split("/")[6]}`)}>
                     {pokemon.name}
                   </button>
                 </li>

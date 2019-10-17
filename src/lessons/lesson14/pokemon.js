@@ -14,7 +14,14 @@ export function PokemonResourceFallback() {
 }
 
 let PokemonCollection = createResource(() =>
-  fetch("https://pokeapi.co/api/v2/pokemon").then(res => res.json())
+  fetch("https://pokeapi.co/api/v2/pokemon").then(res =>
+    res.json().then(res => ({
+      ...res,
+      results: res.results.map(pokemon => ({
+        ...pokemon, id: pokemon.url.split("/")[6]}))
+      })
+    )
+  )
 );
 
 export function PokemonList({

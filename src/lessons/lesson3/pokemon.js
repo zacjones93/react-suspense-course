@@ -8,3 +8,4 @@ let PokemonResource = createResource(() =>
 export default function Pokemon() {
   return <div>{PokemonResource.read().name}</div>;
 }
+
